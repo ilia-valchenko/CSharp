@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 
 namespace Creation
 {
@@ -337,7 +338,7 @@ namespace Creation
 		protected Cover cover;
 		protected Food food;
 		protected Eyes eyes;
-		protected Hair hair;
+		protected Hair hair; 
 		
 		public Creature(string name, Motion motion, Cover cover, Food food, Eyes eyes, Hair hair)
 		{	
@@ -469,7 +470,7 @@ namespace Creation
 			              "\nType cover: " + cover.Type_cover + " (" + cover.Dominant + ")" + 
 			              "\nType food: " + food.Type_food + " (" + food.Dominant + ")" + 
 			              "\nEyes color: " + eyes.Color_eyes + " (" + eyes.Dominant + ")" +
-			              "\nHair color: " + hair.Color_hair + " (" + hair.Dominant + ")"
+			              "\nHair/Wool/Plumage color: " + hair.Color_hair + " (" + hair.Dominant + ")"
 			             );
 		}
 		
@@ -699,7 +700,7 @@ namespace Creation
 							  "\nType food: " + food.Type_food + " (" + food.Dominant + ")" +
 			                  "\nRace: " + race + 
 			                  "\nEyes color: " + eyes.Color_eyes + " (" + eyes.Dominant + ")" + 
-			                  "\nWool color: " + hair.Color_hair + " (" + hair.Dominant + ")" 
+			                  "\nHair color: " + hair.Color_hair + " (" + hair.Dominant + ")" 
 			                  );
 			
 		}
@@ -857,6 +858,32 @@ namespace Creation
 			
 			return new Human(new_race, new_eyes, new_hair);
 		}
+		
+		// ОПЕРАТОРЫ ПРЕОБРАЗОВАНИЯ
+		
+		public static implicit operator Dog(Human human)
+		{
+			var rand = new Random(DateTime.Now.Millisecond);
+			
+			return new Dog(new Eyes(human.Eyes.Color_eyes, human.Eyes.Dominant), 
+			               new Hair(human.Hair.Color_hair, human.Hair.Dominant),
+						   new Tail((TypeTail)rand.Next(0, TypeTail.GetNames(typeof(TypeTail)).Length), RandomBool(rand.Next(0,2))),
+						   new Muzzle((TypeMuzzle)rand.Next(0, TypeMuzzle.GetNames(typeof(TypeMuzzle)).Length), RandomBool(rand.Next(0,2))),
+						   new Ears((TypeEars)rand.Next(0, TypeEars.GetNames(typeof(TypeEars)).Length), RandomBool(rand.Next(0,2)))
+						  );
+		}
+		
+		public static implicit operator Bird(Human human)
+		{
+			var rand = new Random(DateTime.Now.Millisecond);
+			
+			return new Bird(
+						   new Eyes(human.Eyes.Color_eyes, human.Eyes.Dominant), 
+			               new Hair(human.Hair.Color_hair, human.Hair.Dominant),
+			               new Break((TypeBreak)rand.Next(0, TypeBreak.GetNames(typeof(TypeBreak)).Length), RandomBool(rand.Next(0,2))),
+			               new WaterfowlBird(RandomBool(rand.Next(0,2)), RandomBool(rand.Next(0,2)))
+						   );
+		}
 	}
 	
 	class Dog:Creature
@@ -922,7 +949,7 @@ namespace Creation
 							  "\nType muzzle: " + muzzle.Type_muzzle + " (" + muzzle.Dominant + ")" +
 							  "\nType ears: " + ears.Type_ears + " (" + ears.Dominant + ")" +
 			                  "\nEyes color: " + eyes.Color_eyes + " (" + eyes.Dominant + ")" + 
-			                  "\nHair color: " + hair.Color_hair + " (" + hair.Dominant + ")"
+			                  "\nWool color: " + hair.Color_hair + " (" + hair.Dominant + ")"
 			                  );
 		}
 		
@@ -1071,6 +1098,29 @@ namespace Creation
 			}
 			
 			return new Dog(new_eyes, new_hair, new Tail(new_tail.Type_tail, new_tail.Dominant), new Muzzle(new_muzzle.Type_muzzle, new_muzzle.Dominant), new Ears(new_ears.Type_ears, new_ears.Dominant));
+		}
+		
+		public static implicit operator Human(Dog dog)
+		{
+			var rand = new Random(DateTime.Now.Millisecond);
+			
+			return new Human(
+						   (TypeRace)rand.Next(0, TypeRace.GetNames(typeof(TypeRace)).Length),
+						   new Eyes(dog.Eyes.Color_eyes, dog.Eyes.Dominant), 
+			               new Hair(dog.Hair.Color_hair, dog.Hair.Dominant)
+						   );
+		}
+		
+		public static implicit operator Bird(Dog dog)
+		{
+			var rand = new Random(DateTime.Now.Millisecond);
+			
+			return new Bird(
+						   new Eyes(dog.Eyes.Color_eyes, dog.Eyes.Dominant), 
+			               new Hair(dog.Hair.Color_hair, dog.Hair.Dominant),
+			               new Break((TypeBreak)rand.Next(0, TypeBreak.GetNames(typeof(TypeBreak)).Length), RandomBool(rand.Next(0,2))),
+			               new WaterfowlBird(RandomBool(rand.Next(0,2)), RandomBool(rand.Next(0,2)))
+						   );
 		}
 	}
 	
@@ -1256,25 +1306,602 @@ namespace Creation
 			return new Bird(new_eyes, new_hair, new Break(new_break.Type_break, new_break.Dominant), new WaterfowlBird(new_waterfowl.IsWaterfowl, new_waterfowl.Dominant));
 		}
 		
+		public static implicit operator Human(Bird bird)
+		{
+			var rand = new Random(DateTime.Now.Millisecond);
+			
+			return new Human(
+							(TypeRace)rand.Next(0, TypeRace.GetNames(typeof(TypeRace)).Length),
+						   new Eyes(bird.Eyes.Color_eyes, bird.Eyes.Dominant), 
+						   new Hair(bird.Hair.Color_hair, bird.Hair.Dominant)
+						   );
+		}
 		
+		public static implicit operator Dog(Bird bird)
+		{
+			var rand = new Random(DateTime.Now.Millisecond);
+			
+			return new Dog(
+						   new Eyes(bird.Eyes.Color_eyes, bird.Eyes.Dominant), 
+			               new Hair(bird.Hair.Color_hair, bird.Hair.Dominant),
+			               new Tail((TypeTail)rand.Next(0, TypeTail.GetNames(typeof(TypeTail)).Length), RandomBool(rand.Next(0,2))),
+						   new Muzzle((TypeMuzzle)rand.Next(0, TypeMuzzle.GetNames(typeof(TypeMuzzle)).Length), RandomBool(rand.Next(0,2))),
+						   new Ears((TypeEars)rand.Next(0, TypeEars.GetNames(typeof(TypeEars)).Length), RandomBool(rand.Next(0,2)))
+						   );
+		}
 	}
 	
 	class Start
 	{
 		static void Main(string[] args)
 		{	
-			Creature c1 = new Creature();
-			c1.PrintCreature();
+			MainMenu();
 			
-			Creature c2 = new Creature();
-			c2.PrintCreature();
-			
-			Creature res = c1 + c2;
-			res.PrintCreature();
-			
-			Console.ForegroundColor = ConsoleColor.Red;
+			/*Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine("\nTap to continue...");
-			Console.ReadKey(true);
+			Console.ReadKey(true);*/
+		}
+		
+		public static void MainMenu()
+		{
+			Console.Clear();
+			
+			int command = 0;
+			
+			Console.BackgroundColor = ConsoleColor.White;
+			Console.ForegroundColor = ConsoleColor.Black;
+			Console.WriteLine("\nWELCOME TO CREATION GENERATOR");
+			Console.ResetColor();
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[1]");
+			Console.ResetColor();
+			Console.Write(" Create a new creature");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[2]");
+			Console.ResetColor();
+			Console.Write(" Create human");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[3]");
+			Console.ResetColor();
+			Console.Write(" Create dog");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[4]");
+			Console.ResetColor();
+			Console.Write(" Create bird");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[5]");
+			Console.ResetColor();
+			Console.Write(" Exit");
+			
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write("\n\nEnter a command: ");
+			Console.ResetColor();
+			try
+			{
+				command = Convert.ToInt32(Console.ReadLine());
+			}
+			catch(System.FormatException e)
+			{
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine("\nSYSTEM FORMAT EXCEPTION: ");
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write(e.StackTrace);
+				Console.ResetColor();
+				
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.WriteLine("\n\nTap to continue...");
+				Console.ReadKey(true);
+			}
+			
+			switch(command)
+			{
+				case 1:
+					CreatureAction(true);
+					break;
+					
+				case 2:
+					HumanAction(true);
+					break;
+					
+				case 3:
+					DogAction(true);
+					break;	
+					
+				case 4:
+					BirdAction(true);
+					break;
+					
+				case 5:
+					break;
+			}
+		}
+		
+		public static void CreatureAction(bool visible)
+		{
+			Creature cr1 = new Creature();
+			
+			if(visible)
+			{
+				Console.Clear();
+				cr1.PrintCreature();
+			}
+			
+			int command = 0;
+			
+			Console.BackgroundColor = ConsoleColor.White;
+			Console.ForegroundColor = ConsoleColor.Black;
+			Console.WriteLine("\nCREATION GENERATOR MENU");
+			Console.ResetColor();
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[1]");
+			Console.ResetColor();
+			Console.Write(" Create hybrid");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[2]");
+			Console.ResetColor();
+			Console.Write(" Go back");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[3]");
+			Console.ResetColor();
+			Console.Write(" Exit");
+			
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write("\n\nEnter a command: ");
+			Console.ResetColor();
+			try
+			{
+				command = Convert.ToInt32(Console.ReadLine());
+			}
+			catch(System.FormatException e)
+			{
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine("\nSYSTEM FORMAT EXCEPTION: ");
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write(e.StackTrace);
+				Console.ResetColor();
+				
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.WriteLine("\n\nTap to continue...");
+				Console.ReadKey(true);
+			}
+			
+			switch(command)
+			{
+				case 1:
+					Console.Clear();
+					
+					Creature cr2 = new Creature();
+					
+					cr1.PrintCreature();
+					cr2.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Creature res = cr1 + cr2;
+					res.PrintCreature();
+					
+					CreatureAction(false);
+					break;
+					
+				case 2:
+					Console.Clear();
+					MainMenu();
+					break;
+					
+				case 3:
+					break;	
+			}
+		}
+		
+		public static void HumanAction(bool visible)
+		{
+			Human h1 = new Human();
+			
+			if(visible)
+			{
+				Console.Clear();
+				h1.PrintCreature();
+			}
+			
+			int command = 0;
+			
+			Console.BackgroundColor = ConsoleColor.White;
+			Console.ForegroundColor = ConsoleColor.Black;
+			Console.WriteLine("\nCREATION GENERATOR MENU");
+			Console.ResetColor();
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[1]");
+			Console.ResetColor();
+			Console.Write(" Human+human");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[2]");
+			Console.ResetColor();
+			Console.Write(" Human+bird");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[3]");
+			Console.ResetColor();
+			Console.Write(" Human+dog");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[4]");
+			Console.ResetColor();
+			Console.Write(" Implicit conversion to Bird");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[5]");
+			Console.ResetColor();
+			Console.Write(" Implicit conversion to Dog");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[6]");
+			Console.ResetColor();
+			Console.Write(" Go back");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[7]");
+			Console.ResetColor();
+			Console.Write(" Exit");
+			
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write("\n\nEnter a command: ");
+			Console.ResetColor();
+			try
+			{
+				command = Convert.ToInt32(Console.ReadLine());
+			}
+			catch(System.FormatException e)
+			{
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine("\nSYSTEM FORMAT EXCEPTION: ");
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write(e.StackTrace);
+				Console.ResetColor();
+				
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.WriteLine("\n\nTap to continue...");
+				Console.ReadKey(true);
+			}
+			
+			switch(command)
+			{
+				case 1:
+					Console.Clear();
+					
+					Human h2 = new Human();
+					h1.PrintCreature();
+					h2.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Human res1 = h1 + h2;
+					res1.PrintCreature();
+					
+					HumanAction(false);
+					break;
+					
+				case 2:
+					Console.Clear();
+					
+					Creature h3 = new Human();
+					Creature b3 = new Bird();
+					
+					h3.PrintCreature();
+					b3.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Creature res2 = h3 + b3;
+					res2.PrintCreature();
+					
+					HumanAction(false);
+					break;
+					
+				case 3:
+					Console.Clear();
+					
+					Creature h4 = new Human();
+					Creature d4 = new Dog();
+					
+					h4.PrintCreature();
+					d4.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Creature res3 = h4 + d4;
+					res3.PrintCreature();
+					
+					HumanAction(false);
+					break;	
+					
+				case 4:
+					Console.Clear();
+					
+					Human human = new Human();
+					human.PrintCreature();
+					
+					Bird bird = human;
+					bird.PrintCreature();
+					
+					HumanAction(false);
+					break;
+					
+				case 5:
+					Console.Clear();
+					
+					Human human1 = new Human();
+					human1.PrintCreature();
+					
+					Bird dog = human1;
+					dog.PrintCreature();
+					
+					HumanAction(false);
+					break;
+					
+				case 6:
+					Console.Clear();
+					MainMenu();
+					break;
+					
+				case 7:
+					break;
+			}
+		}
+		
+		public static void DogAction(bool visible)
+		{
+			Dog d1 = new Dog();
+			
+			if(visible)
+			{
+				Console.Clear();
+				d1.PrintCreature();
+			}
+			
+			int command = 0;
+			
+			Console.BackgroundColor = ConsoleColor.White;
+			Console.ForegroundColor = ConsoleColor.Black;
+			Console.WriteLine("\nCREATION GENERATOR MENU");
+			Console.ResetColor();
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[1]");
+			Console.ResetColor();
+			Console.Write(" Dog+dog");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[2]");
+			Console.ResetColor();
+			Console.Write(" Dog+human");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[3]");
+			Console.ResetColor();
+			Console.Write(" Dog+bird");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[4]");
+			Console.ResetColor();
+			Console.Write(" Go back");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[5]");
+			Console.ResetColor();
+			Console.Write(" Exit");
+			
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write("\n\nEnter a command: ");
+			Console.ResetColor();
+			try
+			{
+				command = Convert.ToInt32(Console.ReadLine());
+			}
+			catch(System.FormatException e)
+			{
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine("\nSYSTEM FORMAT EXCEPTION: ");
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write(e.StackTrace);
+				Console.ResetColor();
+				
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.WriteLine("\n\nTap to continue...");
+				Console.ReadKey(true);
+			}
+			
+			switch(command)
+			{
+				case 1:
+					Console.Clear();
+					
+					Dog d2 = new Dog();
+					d1.PrintCreature();
+					d2.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Dog res1 = d1 + d2;
+					res1.PrintCreature();
+					
+					DogAction(false);
+					break;
+					
+				case 2:
+					Console.Clear();
+					
+					Creature d3 = new Dog();
+					Creature h3 = new Human();
+					
+					d3.PrintCreature();
+					h3.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Creature res2 = d3 + h3;
+					res2.PrintCreature();
+					
+					DogAction(false);
+					break;
+					
+				case 3:
+					Console.Clear();
+					
+					Creature d4 = new Dog();
+					Creature b4 = new Bird();
+					
+					d4.PrintCreature();
+					b4.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Creature res3 = d4 + b4;
+					res3.PrintCreature();
+					
+					DogAction(false);
+					break;	
+					
+				case 4:
+					Console.Clear();
+					DogAction(false);
+					break;
+					
+				case 5:
+					break;
+			}
+		}
+		
+		public static void BirdAction(bool visible)
+		{
+			Bird b1 = new Bird();
+			
+			if(visible)
+			{
+				Console.Clear();
+				b1.PrintCreature();
+			}
+			
+			int command = 0;
+			
+			Console.BackgroundColor = ConsoleColor.White;
+			Console.ForegroundColor = ConsoleColor.Black;
+			Console.WriteLine("\nCREATION GENERATOR MENU");
+			Console.ResetColor();
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[1]");
+			Console.ResetColor();
+			Console.Write(" Bird+bird");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[2]");
+			Console.ResetColor();
+			Console.Write(" Bird+human");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[3]");
+			Console.ResetColor();
+			Console.Write(" Bird+dog");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[4]");
+			Console.ResetColor();
+			Console.Write(" Go back");
+			
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("\n[5]");
+			Console.ResetColor();
+			Console.Write(" Exit");
+			
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write("\n\nEnter a command: ");
+			Console.ResetColor();
+			try
+			{
+				command = Convert.ToInt32(Console.ReadLine());
+			}
+			catch(System.FormatException e)
+			{
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine("\nSYSTEM FORMAT EXCEPTION: ");
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write(e.StackTrace);
+				Console.ResetColor();
+				
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.WriteLine("\n\nTap to continue...");
+				Console.ReadKey(true);
+			}
+			
+			switch(command)
+			{
+				case 1:
+					Console.Clear();
+					
+					Bird b2 = new Bird();
+					b1.PrintCreature();
+					b2.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Bird res1 = b1 + b2;
+					res1.PrintCreature();
+					
+					BirdAction(false);
+					break;
+					
+				case 2:
+					Console.Clear();
+					
+					Creature b3 = new Bird();
+					Creature h3 = new Human();
+					
+					b3.PrintCreature();
+					h3.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Creature res2 = b3 + h3;
+					res2.PrintCreature();
+					
+					BirdAction(false);
+					break;
+					
+				case 3:
+					Console.Clear();
+					
+					Creature d4 = new Dog();
+					Creature b4 = new Bird();
+					
+					d4.PrintCreature();
+					b4.PrintCreature();
+					
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.WriteLine("\nAFTER MUTATION:");
+					Creature res3 = d4 + b4;
+					res3.PrintCreature();
+					
+					DogAction(false);
+					break;	
+					
+				case 4:
+					Console.Clear();
+					DogAction(false);
+					break;
+					
+				case 5:
+					break;
+			}
 		}
 	}
 }
