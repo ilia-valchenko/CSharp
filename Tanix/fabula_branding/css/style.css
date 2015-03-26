@@ -1,0 +1,318 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+	min-width: 980px;
+	max-width: 2000px;
+	margin: 0 auto;
+	font-family: Arial;
+}
+
+/*Убираем рамки вокруг изображений в IE*/
+
+img {
+	border: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+header {
+	background-color: #aac800;
+	padding: 1.4em 13em 0 13em;
+	min-width: 980px;
+}
+
+header address {
+	display: inline-block;
+	float: right;
+}
+
+header address span {
+	display: block;
+	color: #00555f; 
+	float: left;
+	margin-right: 1.5em;
+}
+
+header address span:last-of-type {
+	margin-right: 1em;
+}
+
+/*Заказать обратный звонок*/
+
+header div {
+	float: right;
+	border-left: 0.2em solid #00555f; 
+	padding: 0.5em 0.3em 0.5em 1em;
+	/*прижимаем к нижней границе блока*/
+	position: relative;
+	bottom: 0;
+}
+
+header div span {
+	padding: 0.5em;
+	color: #ffffff;
+	background-color: #00555f;
+}
+
+header div  span:hover {
+	background-color: #007382;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+/*Главное панель навигации по сайту*/
+
+header nav {
+	margin-top: 2.5%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	border-top: 0.2em dotted #ffffff;
+}
+
+header nav ul {
+	list-style: none;
+	text-align: center;
+}
+
+/*Моя реализация не совсем корректная. Желательно было бы поставить изображения
+кругов как бэкграунд блока, а поверх разместить тект с названиями разделов. Это
+помогла бы пользователям программ чтения экрана*/
+
+header nav ul li {
+	width: 6.5em;
+	height: 6.5em;
+	display: inline-block;
+	margin-right: 5%;
+	color: #ffffff;
+	background: url(../img/menu_background.png) no-repeat;
+}
+
+/*header nav ul li:hover {
+	color: #00555f;
+	background: url(../img/menu_background_active.png) no-repeat;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}*/
+
+/*Отображаем стрелку с помощью псевдоэлемента*/
+
+section:first-of-type:before {
+	content: '';
+    display: block;
+    margin: auto;
+    border-color: #aac800 transparent transparent transparent;
+    border-style: solid;
+    border-width: 2.5em;
+    width: 0;
+    height: 0;
+}
+
+/*Первый блок с контентом*/
+
+section:first-of-type{
+	min-width: 980px;
+}
+
+section:first-of-type h1{
+	margin-top: 0;
+	margin-bottom: 1em;
+	font-size: 2.2em;
+	text-align: center;
+	font-weight: normal;
+}
+
+section:first-of-type article {
+	padding: 0 13em 5em 13em; /*1.4*/
+	float: right;
+	background-color: #ebebeb;
+}
+
+/*Стрелка у второго артикля в первой секции*/
+section:first-of-type article:before {
+	content: '';
+    display: block;
+    margin: auto;
+    border-color: #ffffff transparent transparent transparent;
+    border-style: solid;
+    border-width: 2.5em;
+    width: 0;
+    height: 0;
+}
+
+section:first-of-type article img {
+	width: 27em;
+	float: right;
+	margin-left: 2em;
+}
+
+section:first-of-type article:first-of-type {
+	background-color: #ffffff;
+}
+
+section:first-of-type article:first-of-type:before {
+	display: none;
+}
+
+section:first-of-type article:last-of-type {
+	background-color: #ffffff;
+}
+
+section:first-of-type article:last-of-type:before {
+	content: '';
+    display: block;
+    margin: auto;
+    border-color: #ebebeb transparent transparent transparent;
+    border-style: solid;
+    border-width: 2.5em;
+    width: 0;
+    height: 0;
+}
+
+section:first-of-type article:first-of-type img  {
+	float: left;
+	margin-right: 2em;
+}
+
+section:first-of-type article:last-of-type img {
+	float: left;
+	margin-right: 2em;
+}
+
+/*Второй блок с контентом*/
+
+section:last-of-type {
+	padding: 5em 13em 2em 13em;
+	background-color: #ebebeb; 
+	min-width: 980px;
+}
+
+/*Рисуем стрелку*/
+
+section:last-of-type:before {
+	content: '';
+    display: block;
+    margin: auto;
+    border-color: red transparent transparent transparent;
+    border-style: solid;
+    border-width: 2.5em;
+    width: 0;
+    height: 0;
+}
+
+section:last-of-type h2 {
+	padding: 1em;
+	font-size: 2.2em;
+	text-align: center;
+	font-weight: normal; 
+}
+
+section:last-of-type article {
+	width: 28.6%;
+	float: left;
+	margin-right: 2%;
+	margin-bottom: 1%;
+	background-color: #ffffff;
+	padding: 0.7%;
+	/*для того чтобы прижать нашу кнопку подробнее к нижней границе артикля*/
+	position: relative;
+}
+
+section:last-of-type article img {
+	width: 100%;
+	display: block;
+}
+
+section:last-of-type article:last-of-type {
+	margin-right: 0;
+}
+
+/*Небольшой костыль для того, чтобы элементы не перескакивали на другую строку*/
+
+section:last-of-type span {
+	display:inline-block; 
+	width:100%;
+}
+
+section:last-of-type article h3 {
+	padding: 7% 4% 0 4%;
+}
+
+section:last-of-type article p {
+	padding: 6% 4% 4% 4%;
+}
+
+/*Стили для кнопки подробнее*/
+
+section:last-of-type article div {
+	position: absolute;
+  	bottom: 0;
+	width: 6em;
+	right: 0;
+	padding: 0.5em;
+}
+
+section:last-of-type article div a {
+	text-decoration: underline;
+	text-align: right;
+	color: #f68d2c;
+}
+
+section:last-of-type article div a:hover {
+	color: #ffa14a;
+}
+
+footer {
+	padding: 5% 15% 15% 15%;
+	background-color: #00555f; 
+	color: #ffffff;
+}
+
+footer p {
+	font-size: 2.5em;
+	width: 53%;
+	height: inherit;
+	float: left;
+	border-right: 0.1em dotted #ffffff;
+	text-align: right;
+	padding-right: 2%;
+}
+
+footer p span {
+	font-size: 0.3em;
+}
+
+footer div {
+	text-align: center;
+}
+
+footer img{
+	width: 20%;
+}
+
+footer address {
+	padding-left: 2%;
+	margin-left: 2%;
+	width: 18%;
+	float: right;
+	border-left: 0.3em dotted #ffffff;
+}
+
+footer span {
+	display:inline-block; 
+	width:100%; 
+}
+
+footer address span {
+	margin-bottom: 8%;
+}
