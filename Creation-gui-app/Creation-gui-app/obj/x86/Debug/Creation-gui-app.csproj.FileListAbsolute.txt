@@ -1,0 +1,12 @@
+D:\Projects\Creation-gui-app\Creation-gui-app\bin\Debug\Creation-gui-app.exe
+D:\Projects\Creation-gui-app\Creation-gui-app\bin\Debug\Creation-gui-app.pdb
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation_gui_app.Properties.Resources.resources
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation-gui-app.csproj.GenerateResource.Cache
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation-gui-app.exe
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation-gui-app.pdb
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation-gui-app.csprojResolveAssemblyReference.cache
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation_gui_app.StartForm.resources
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation_gui_app.CreatureForm.resources
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation_gui_app.HumanForm.resources
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation_gui_app.HumanPlusBirdForm.resources
+D:\Projects\Creation-gui-app\Creation-gui-app\obj\x86\Debug\Creation_gui_app.HumanPlusDogForm.resources
