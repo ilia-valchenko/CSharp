@@ -1,0 +1,1 @@
+﻿public enum TypeName {mammal, bird, waterfowl, reptile};
