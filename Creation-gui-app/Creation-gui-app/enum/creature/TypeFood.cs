@@ -1,1 +1,0 @@
-﻿public enum TypeFood {carnivore, herbivore, omnivore};

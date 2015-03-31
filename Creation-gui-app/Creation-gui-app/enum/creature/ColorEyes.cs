@@ -1,1 +1,0 @@
-﻿public enum ColorEyes {blue, grey, green, amber, swamp, brown, black, yellow};

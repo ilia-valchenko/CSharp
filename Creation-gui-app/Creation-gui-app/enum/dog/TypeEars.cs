@@ -1,1 +1,0 @@
-﻿public enum TypeEars {prick_ears, hanging_ears, semi_prick_ears}; // стоячие уши, висячие уши, полустоячие уши
