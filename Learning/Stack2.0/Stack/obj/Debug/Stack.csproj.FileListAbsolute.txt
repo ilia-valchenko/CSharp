@@ -3,4 +3,3 @@ c:\users\ilia\documents\visual studio 2015\Projects\Stack\Stack\bin\Debug\Stack.
 c:\users\ilia\documents\visual studio 2015\Projects\Stack\Stack\bin\Debug\Stack.pdb
 c:\users\ilia\documents\visual studio 2015\Projects\Stack\Stack\obj\Debug\Stack.exe
 c:\users\ilia\documents\visual studio 2015\Projects\Stack\Stack\obj\Debug\Stack.pdb
-C:\Users\IliA\documents\visual studio 2015\Projects\Stack\Stack\obj\Debug\Stack.csprojResolveAssemblyReference.cache

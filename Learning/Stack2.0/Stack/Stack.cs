@@ -61,12 +61,14 @@ namespace Stack
             return array[indexOfLastElement];
         }
 
-        public void PrintStack()
+        public T[] GetArrayOfStackElements()
         {
-            Console.WriteLine("\nAll stack's elements:");
+            T[] arrayOfStackElements = new T[indexOfLastElement + 1];
 
-            for (int i = indexOfLastElement; i != -1; i--)
-                Console.WriteLine(array[i].ToString());
+            for (int i = 0; i <= indexOfLastElement ; i++)
+                arrayOfStackElements[i] = array[i];
+
+            return arrayOfStackElements;
         }
     }
 }

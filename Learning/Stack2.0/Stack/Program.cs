@@ -10,7 +10,9 @@ namespace Stack
     {
         static void Main(string[] args)
         {
-            Console.Write("This is my custom stack realization based on integer values.\nPlease enter the size of stack: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("This is my custom stack realization.");
+            Console.ResetColor();
 
             bool isStop = false;
             Stack<int> stackTest = new Stack<int>();
@@ -39,7 +41,11 @@ namespace Stack
                         break;
 
                     case (4):
-                        stackTest.PrintStack();
+                        Console.WriteLine("\nStack's elements:");
+
+                        foreach(int item in stackTest.GetArrayOfStackElements())
+                            Console.WriteLine(item);
+
                         break;
 
                     case (5):
