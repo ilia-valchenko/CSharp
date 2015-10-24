@@ -24,15 +24,39 @@ namespace LinkedList
 
             list.AddToTail(11);
             list.AddToTail(12);
+
+            list.Next();
+            list.Next();
+            list.Next();
+            list.Add(888);
+
             list.AddToTail(13);
             list.AddToTail(14);
 
-            foreach(Node<int> item in list.GetList())
+            // fix it
+            // list.Next();
+            // list.Next();
+            // list.Delete();
+
+            
+
+            // print list
+            Node<int> elem = list.GetHead();
+
+            Console.WriteLine("HEAD: " + list.GetHead().value + "\n");
+            Console.WriteLine("TAIL: " + list.GetTail().value + "\n");
+            Console.WriteLine("CURRENT NODE: " + list.GetCurrentNode().value + "\n");
+
+            Console.Write("LIST:");
+
+            while (true)
             {
-                if(item != null)
-                {
-                    Console.Write(list.GetList()[item.next].value + "  ");
-                }
+                Console.Write("  " + elem.value);
+                if(elem.next == 9999)
+                    break;
+                else
+                    elem = list.elems[elem.next];
+
             }
 
             Console.WriteLine("\n\nTap to continue...");
