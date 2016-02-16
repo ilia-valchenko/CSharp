@@ -1,6 +1,0 @@
-c:\users\ilia\documents\visual studio 2015\Projects\QuickSort\QuickSort\bin\Debug\QuickSort.exe.config
-c:\users\ilia\documents\visual studio 2015\Projects\QuickSort\QuickSort\bin\Debug\QuickSort.exe
-c:\users\ilia\documents\visual studio 2015\Projects\QuickSort\QuickSort\bin\Debug\QuickSort.pdb
-c:\users\ilia\documents\visual studio 2015\Projects\QuickSort\QuickSort\obj\Debug\QuickSort.csprojResolveAssemblyReference.cache
-c:\users\ilia\documents\visual studio 2015\Projects\QuickSort\QuickSort\obj\Debug\QuickSort.exe
-c:\users\ilia\documents\visual studio 2015\Projects\QuickSort\QuickSort\obj\Debug\QuickSort.pdb
