@@ -1,0 +1,6 @@
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithInterface\FunWithInterface\bin\Debug\FunWithInterface.exe.config
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithInterface\FunWithInterface\bin\Debug\FunWithInterface.exe
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithInterface\FunWithInterface\bin\Debug\FunWithInterface.pdb
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithInterface\FunWithInterface\obj\Debug\FunWithInterface.csprojResolveAssemblyReference.cache
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithInterface\FunWithInterface\obj\Debug\FunWithInterface.exe
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithInterface\FunWithInterface\obj\Debug\FunWithInterface.pdb
