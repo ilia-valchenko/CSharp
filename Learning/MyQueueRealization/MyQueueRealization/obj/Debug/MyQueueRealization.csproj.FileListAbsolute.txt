@@ -1,0 +1,6 @@
+c:\users\ilia\documents\visual studio 2015\Projects\MyQueueRealization\MyQueueRealization\bin\Debug\MyQueueRealization.exe.config
+c:\users\ilia\documents\visual studio 2015\Projects\MyQueueRealization\MyQueueRealization\bin\Debug\MyQueueRealization.exe
+c:\users\ilia\documents\visual studio 2015\Projects\MyQueueRealization\MyQueueRealization\bin\Debug\MyQueueRealization.pdb
+c:\users\ilia\documents\visual studio 2015\Projects\MyQueueRealization\MyQueueRealization\obj\Debug\MyQueueRealization.csprojResolveAssemblyReference.cache
+c:\users\ilia\documents\visual studio 2015\Projects\MyQueueRealization\MyQueueRealization\obj\Debug\MyQueueRealization.exe
+c:\users\ilia\documents\visual studio 2015\Projects\MyQueueRealization\MyQueueRealization\obj\Debug\MyQueueRealization.pdb
