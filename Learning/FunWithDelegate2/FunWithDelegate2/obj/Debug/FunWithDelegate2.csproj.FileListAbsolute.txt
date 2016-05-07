@@ -1,0 +1,6 @@
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithDelegate2\FunWithDelegate2\bin\Debug\FunWithDelegate2.exe.config
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithDelegate2\FunWithDelegate2\bin\Debug\FunWithDelegate2.exe
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithDelegate2\FunWithDelegate2\bin\Debug\FunWithDelegate2.pdb
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithDelegate2\FunWithDelegate2\obj\Debug\FunWithDelegate2.csprojResolveAssemblyReference.cache
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithDelegate2\FunWithDelegate2\obj\Debug\FunWithDelegate2.exe
+c:\users\ilia\documents\visual studio 2015\Projects\FunWithDelegate2\FunWithDelegate2\obj\Debug\FunWithDelegate2.pdb
