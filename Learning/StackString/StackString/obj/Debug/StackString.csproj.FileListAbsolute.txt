@@ -1,0 +1,6 @@
+c:\users\ilia\documents\visual studio 2015\Projects\StackString\StackString\bin\Debug\StackString.exe.config
+c:\users\ilia\documents\visual studio 2015\Projects\StackString\StackString\bin\Debug\StackString.exe
+c:\users\ilia\documents\visual studio 2015\Projects\StackString\StackString\bin\Debug\StackString.pdb
+c:\users\ilia\documents\visual studio 2015\Projects\StackString\StackString\obj\Debug\StackString.csprojResolveAssemblyReference.cache
+c:\users\ilia\documents\visual studio 2015\Projects\StackString\StackString\obj\Debug\StackString.exe
+c:\users\ilia\documents\visual studio 2015\Projects\StackString\StackString\obj\Debug\StackString.pdb
